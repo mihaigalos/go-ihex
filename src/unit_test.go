@@ -47,3 +47,13 @@ func TestPayloadWorks_whenTypical(t *testing.T) {
 
 	}
 }
+
+func TestCRCWorks_whenTypical(t *testing.T) {
+	expected := 225
+
+	actual := CRC(":107E00AB11E0A0E0B1E0E0E1F0E802C005900D92E1")
+
+	if actual != expected {
+		t.Errorf("No Match: %d != %d", actual, expected)
+	}
+}

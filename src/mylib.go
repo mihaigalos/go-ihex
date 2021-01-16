@@ -56,3 +56,15 @@ func Payload(line string) [32]int {
 
 	return result
 }
+
+func CRC(line string) int {
+	n := 2 * NumberOfBytes(line)
+	slice := line[9+n : 9+n+2]
+
+	value, err := strconv.ParseInt(slice, 16, 64)
+	if err != nil {
+		fmt.Printf("Conversion failed: %s\n", err)
+	}
+
+	return int(value)
+}

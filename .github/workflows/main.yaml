@@ -17,10 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Generate bazel BUILD files
-        run: |
-          bazel run //:gazelle
-
       - name: Build and Test
         run: |
           bazel test //... --color=yes 2>&1

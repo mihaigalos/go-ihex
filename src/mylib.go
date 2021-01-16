@@ -76,11 +76,22 @@ func IsCRCValid(line string) bool {
 	p := Payload(line)
 	expectedCRC := CRC(line)
 
-	fmt.Printf("expectedCRC: %x\n", expectedCRC)
 	computedCRC := uint8(n + a + r)
 	for _, e := range p {
 		computedCRC = computedCRC + uint8(e)
 	}
 
 	return -int8(computedCRC) == int8(expectedCRC)
+}
+
+func IsFileValid(file []string) bool {
+	for _, line := range file {
+
+		actual := IsCRCValid(line)
+		if actual == false {
+			return false
+		}
+
+	}
+	return true
 }

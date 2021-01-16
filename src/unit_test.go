@@ -90,7 +90,7 @@ func TestIsCRCValidWorks_whenTypicalNegative(t *testing.T) {
 func TestIsCRCOnWholeFileValid_whenTypical(t *testing.T) {
 	expected := true
 
-	demo_file := []string{
+	file := []string{
 		":100000000C9434000C944F000C944F000C944F004F",
 		":100010000C944F000C944F000C944F000C944F0024",
 		":100020000C944F000C944F000C944F000C944F0014",
@@ -109,12 +109,10 @@ func TestIsCRCOnWholeFileValid_whenTypical(t *testing.T) {
 		":0800F00091E00E945700F0CFDF",
 		":00000001FF"}
 
-	for _, line := range demo_file {
+	actual := IsFileValid(file)
 
-		actual := IsCRCValid(line)
-
-		if actual != expected {
-			t.Errorf("No Match: %t != %t", actual, expected)
-		}
+	if actual != expected {
+		t.Errorf("No Match: %t != %t", actual, expected)
 	}
+
 }

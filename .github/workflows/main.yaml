@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+    tags:
+      - v*
+
+  pull_request:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build and Test
+        run: |
+          bazel test //... --color=yes 2>&1

@@ -38,3 +38,21 @@ func Record(line string) int {
 
 	return int(value)
 }
+
+func Payload(line string) [32]int {
+	var result [32]int
+	n := 2 * NumberOfBytes(line)
+	slice := line[9 : 9+n]
+
+	for i := 0; i < len(slice); i += 2 {
+		hex := slice[i : i+2]
+		value, err := strconv.ParseInt(hex, 16, 64)
+		result[i/2] = int(value)
+
+		if err != nil {
+			fmt.Printf("Conversion failed: %s\n", err)
+		}
+	}
+
+	return result
+}

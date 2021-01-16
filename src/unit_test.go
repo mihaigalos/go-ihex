@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestNumberOfBytesWorks_whenTypical(t *testing.T) {
 	expected := 10
@@ -29,5 +31,19 @@ func TestRecordWorks_whenTypical(t *testing.T) {
 
 	if actual != expected {
 		t.Errorf("No Match: %d != %d", actual, expected)
+	}
+}
+
+func TestPayloadWorks_whenTypical(t *testing.T) {
+	expected := [32]int{17, 224, 160, 224, 177, 224, 224, 225, 240, 232, 2, 192, 5, 144, 13, 146}
+
+	actual_payload := Payload(":107E000011E0A0E0B1E0E0E1F0E802C005900D92E1")
+
+	for i, e := range actual_payload {
+
+		if e != int(expected[i]) {
+			t.Errorf("No Match: %d != %d", e, expected[i])
+		}
+
 	}
 }

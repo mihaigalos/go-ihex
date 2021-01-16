@@ -11,6 +11,7 @@ func NumberOfBytes(line string) int {
 	value, err := strconv.ParseInt(slice, 16, 64)
 	if err != nil {
 		fmt.Printf("Conversion failed: %s\n", err)
+		panic(".")
 	}
 
 	return int(value)
@@ -23,6 +24,7 @@ func StartingAddress(line string) int {
 	value, err := strconv.ParseInt(slice, 16, 64)
 	if err != nil {
 		fmt.Printf("Conversion failed: %s\n", err)
+		panic(".")
 	}
 
 	return int(value)
@@ -34,6 +36,7 @@ func Record(line string) int {
 	value, err := strconv.ParseInt(slice, 16, 64)
 	if err != nil {
 		fmt.Printf("Conversion failed: %s\n", err)
+		panic(".")
 	}
 
 	return int(value)
@@ -51,6 +54,7 @@ func Payload(line string) [32]int {
 
 		if err != nil {
 			fmt.Printf("Conversion failed: %s\n", err)
+			panic(".")
 		}
 	}
 
@@ -64,6 +68,7 @@ func CRC(line string) uint8 {
 	value, err := strconv.ParseInt(slice, 16, 64)
 	if err != nil {
 		fmt.Printf("Conversion failed: %s\n", err)
+		panic(".")
 	}
 
 	return uint8(int8(value))

@@ -18,6 +18,9 @@ go_binary(
 
 go_test(
     name = "src_test",
-    srcs = ["unit_test.go"],
+    srcs = [
+        "unit_exceptions_test.go",
+        "unit_typical_test.go",
+    ],
     embed = [":src_lib"],
 )

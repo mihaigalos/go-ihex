@@ -24,3 +24,18 @@ jobs:
       - name: Build and Test
         run: |
           bazel test //... --color=yes 2>&1
+  
+  coverage:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read secrets
+        run: |
+          CODECOV_TOKEN="${{ secrets.CODECOV_TOKEN }}"
+
+      - name: Compute and publish Coverage Report
+        run: |
+          cd src/
+          go test -race -coverprofile=coverage.txt -covermode=atomic
+          bash <(curl -s https://codecov.io/bash) -f coverage.txt || echo "Codecov did not collect coverage reports"

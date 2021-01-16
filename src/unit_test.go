@@ -11,3 +11,13 @@ func TestNumberOfBytesWorks_whenTypical(t *testing.T) {
 		t.Errorf("No Match: %d != %d", actual, expected)
 	}
 }
+
+func TestStartingAddressWorks_whenTypical(t *testing.T) {
+	expected := 32256
+
+	actual := StartingAddress(":107E000011E0A0E0B1E0E0E1F0E802C005900D92E1")
+
+	if actual != expected {
+		t.Errorf("No Match: %d != %d", actual, expected)
+	}
+}

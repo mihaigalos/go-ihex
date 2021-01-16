@@ -27,3 +27,14 @@ func StartingAddress(line string) int {
 
 	return int(value)
 }
+
+func Record(line string) int {
+	slice := line[7:9]
+
+	value, err := strconv.ParseInt(slice, 16, 64)
+	if err != nil {
+		fmt.Printf("Conversion failed: %s\n", err)
+	}
+
+	return int(value)
+}

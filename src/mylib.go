@@ -57,7 +57,7 @@ func Payload(line string) [32]int {
 	return result
 }
 
-func CRC(line string) int {
+func CRC(line string) uint8 {
 	n := 2 * NumberOfBytes(line)
 	slice := line[9+n : 9+n+2]
 
@@ -66,5 +66,21 @@ func CRC(line string) int {
 		fmt.Printf("Conversion failed: %s\n", err)
 	}
 
-	return int(value)
+	return uint8(int8(value))
+}
+
+func IsCRCValid(line string) bool {
+	n := NumberOfBytes(line)
+	a := StartingAddress(line)
+	r := Record(line)
+	p := Payload(line)
+	expectedCRC := CRC(line)
+
+	fmt.Printf("expectedCRC: %x\n", expectedCRC)
+	computedCRC := uint8(n + a + r)
+	for _, e := range p {
+		computedCRC = computedCRC + uint8(e)
+	}
+
+	return -int8(computedCRC) == int8(expectedCRC)
 }

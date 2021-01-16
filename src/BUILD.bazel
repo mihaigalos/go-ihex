@@ -2,7 +2,10 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
 
 go_library(
     name = "src_lib",
-    srcs = ["mylib.go"],
+    srcs = [
+        "intel_hex_parser.go",
+        "main.go",
+    ],
     importpath = "github.com/mihaigalos/code_templates/go/src",
     visibility = ["//visibility:private"],
 )

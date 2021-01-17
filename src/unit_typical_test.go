@@ -5,7 +5,7 @@ import (
 )
 
 func TestNumberOfBytesWorks_whenTypical(t *testing.T) {
-	expected := 10
+	expected := 0x0A
 
 	actual := NumberOfBytes(":0A0000000EC015C014C013C012C011")
 
@@ -15,7 +15,7 @@ func TestNumberOfBytesWorks_whenTypical(t *testing.T) {
 }
 
 func TestStartingAddressWorks_whenTypical(t *testing.T) {
-	expected := 32256
+	expected := 0x7E00
 
 	actual := StartingAddress(":107E000011E0A0E0B1E0E0E1F0E802C005900D92E1")
 
@@ -25,7 +25,7 @@ func TestStartingAddressWorks_whenTypical(t *testing.T) {
 }
 
 func TestRecordWorks_whenTypical(t *testing.T) {
-	expected := 171
+	expected := 0xAB
 
 	actual := Record(":107E00AB11E0A0E0B1E0E0E1F0E802C005900D92E1")
 
@@ -35,7 +35,7 @@ func TestRecordWorks_whenTypical(t *testing.T) {
 }
 
 func TestPayloadWorks_whenTypical(t *testing.T) {
-	expected := [32]int{17, 224, 160, 224, 177, 224, 224, 225, 240, 232, 2, 192, 5, 144, 13, 146}
+	expected := [32]int{0x11, 0xE0, 0xA0, 0xE0, 0xB1, 0xE0, 0xE0, 0xE1, 0xF0, 0xE8, 0x02, 0xC0, 0x05, 0x90, 0x0D, 0x92}
 
 	actual_payload := Payload(":107E000011E0A0E0B1E0E0E1F0E802C005900D92E1")
 

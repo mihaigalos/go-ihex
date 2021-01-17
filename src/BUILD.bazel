@@ -7,7 +7,7 @@ go_library(
         "main.go",
     ],
     importpath = "github.com/mihaigalos/intel-hex-parser/src",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 go_binary(

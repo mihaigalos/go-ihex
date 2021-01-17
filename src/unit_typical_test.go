@@ -89,7 +89,6 @@ func TestIsCRCValidWorks_whenTypicalNegative(t *testing.T) {
 
 func TestIsCRCOnWholeFileValid_whenTypical(t *testing.T) {
 	expected := true
-
 	file := []string{
 		":100000000C9434000C944F000C944F000C944F004F",
 		":100010000C944F000C944F000C944F000C944F0024",
@@ -119,7 +118,6 @@ func TestIsCRCOnWholeFileValid_whenTypical(t *testing.T) {
 
 func TestIsCRCOnWholeFileNotValid_whenTypical(t *testing.T) {
 	expected := false
-
 	file := []string{
 		":100000000C9434000C944F000C944F000C944F004F",
 		":100010000C944F000C944F000C944F000C944F0014",

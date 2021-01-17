@@ -3,5 +3,5 @@ load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 
 buildifier(name = "buildifier")
 
-# gazelle:prefix github.com/mihaigalos/intel-hex-parser
+# gazelle:prefix github.com/mihaigalos/intel_hex_parser
 gazelle(name = "gazelle")

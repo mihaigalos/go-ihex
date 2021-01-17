@@ -1,26 +1,26 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
 
 go_library(
-    name = "src_lib",
+    name = "parser_lib",
     srcs = [
         "intel_hex_parser.go",
         "main.go",
     ],
-    importpath = "github.com/mihaigalos/intel_hex_parser",
+    importpath = "github.com/mihaigalos/intel_hex_parser/parser",
     visibility = ["//visibility:public"],
 )
 
 go_binary(
-    name = "src",
-    embed = [":src_lib"],
+    name = "parser",
+    embed = [":parser_lib"],
     visibility = ["//visibility:public"],
 )
 
 go_test(
-    name = "src_test",
+    name = "parser_test",
     srcs = [
         "unit_exceptions_test.go",
         "unit_typical_test.go",
     ],
-    embed = [":src_lib"],
+    embed = [":parser_lib"],
 )

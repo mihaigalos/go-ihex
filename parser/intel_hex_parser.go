@@ -76,6 +76,11 @@ func CRC(line string) uint8 {
 
 func IsCRCValid(line string) bool {
 	n := NumberOfBytes(line)
+
+	if n == 0 {
+		return true
+	}
+
 	a := StartingAddress(line)
 	r := Record(line)
 	p := Payload(line)

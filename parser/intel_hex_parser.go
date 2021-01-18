@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func NumberOfBytes(line string) int {
+func NumberOfBytes(line string) uint8 {
 	slice := line[1:3]
 
 	value, err := strconv.ParseInt(slice, 16, 64)
@@ -14,11 +14,11 @@ func NumberOfBytes(line string) int {
 		panic(".")
 	}
 
-	return int(value)
+	return uint8(value)
 
 }
 
-func StartingAddress(line string) int {
+func StartingAddress(line string) uint16 {
 	slice := line[3:7]
 
 	value, err := strconv.ParseInt(slice, 16, 64)
@@ -27,10 +27,10 @@ func StartingAddress(line string) int {
 		panic(".")
 	}
 
-	return int(value)
+	return uint16(value)
 }
 
-func Record(line string) int {
+func Record(line string) uint8 {
 	slice := line[7:9]
 
 	value, err := strconv.ParseInt(slice, 16, 64)
@@ -39,18 +39,18 @@ func Record(line string) int {
 		panic(".")
 	}
 
-	return int(value)
+	return uint8(value)
 }
 
-func Payload(line string) [32]int {
-	var result [32]int
+func Payload(line string) [32]uint8 {
+	var result [32]uint8
 	n := 2 * NumberOfBytes(line)
 	slice := line[9 : 9+n]
 
 	for i := 0; i < len(slice); i += 2 {
 		hex := slice[i : i+2]
 		value, err := strconv.ParseInt(hex, 16, 64)
-		result[i/2] = int(value)
+		result[i/2] = uint8(value)
 
 		if err != nil {
 			fmt.Printf("Conversion failed: %s\n", err)
@@ -81,7 +81,7 @@ func IsCRCValid(line string) bool {
 		return true
 	}
 
-	a := StartingAddress(line)
+	a := uint8(StartingAddress(line))
 	r := Record(line)
 	p := Payload(line)
 	expectedCRC := CRC(line)

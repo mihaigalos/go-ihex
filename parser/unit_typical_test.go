@@ -169,7 +169,7 @@ func TestTotalNumberOfBytes_whenTypical(t *testing.T) {
 	actual := TotalNumberOfBytes(file)
 
 	if actual != expected {
-		t.Errorf("No Match: %t != %t", actual, expected)
+		t.Errorf("No Match: %d != %d", actual, expected)
 	}
 
 }

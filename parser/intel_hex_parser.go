@@ -105,3 +105,11 @@ func IsFileValid(file []string) bool {
 	}
 	return true
 }
+
+func TotalNumberOfBytes(file []string) int {
+	result := 0
+	for _, line := range file {
+		result = result + int(NumberOfBytes(line))
+	}
+	return result
+}

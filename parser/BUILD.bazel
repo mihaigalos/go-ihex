@@ -6,7 +6,7 @@ go_library(
         "intel_hex_parser.go",
         "main.go",
     ],
-    importpath = "github.com/mihaigalos/intel-hex-parser/parser",
+    importpath = "github.com/mihaigalos/go-ihex/parser",
     visibility = ["//visibility:public"],
 )
 

@@ -1,6 +1,6 @@
-# intel-hex-parser
+# go-ihex
 
-![CI](https://github.com/mihaigalos/intel-hex-parser/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/mihaigalos/intel-hex-parser/branch/main/graph/badge.svg?token=YRA05WPK3f)](https://codecov.io/gh/mihaigalos/intel-hex-parser) [![license](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](LICENSE) [![LoC](https://tokei.rs/b1/github/mihaigalos/intel-hex-parser)](https://github.com/Aaronepower/tokei)
+![CI](https://github.com/mihaigalos/go-ihex/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/mihaigalos/go-ihex/branch/main/graph/badge.svg?token=YRA05WPK3f)](https://codecov.io/gh/mihaigalos/go-ihex) [![license](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](LICENSE) [![LoC](https://tokei.rs/b1/github/mihaigalos/go-ihex)](https://github.com/Aaronepower/tokei)
 
 Parser for intel hex file format, bazelized and easily importable as a Go library.
 
@@ -36,9 +36,9 @@ go_register_toolchains()
 gazelle_dependencies()
 
 go_repository(
-    name = "intel-hex-parser",
+    name = "go-ihex",
     commit = "93e825890b53ec109a8846b87d63bba826c17056",
-    importpath = "github.com/mihaigalos/intel-hex-parser",
+    importpath = "github.com/mihaigalos/go-ihex",
 )
 ```
 
@@ -54,7 +54,7 @@ go_library(
     ],
     importpath = "github.com/mihaigalos/uartboot/host",
     visibility = ["//visibility:private"],
-    deps = ["@intel-hex-parser//parser:parser_lib"],
+    deps = ["@go-ihex//parser:parser_lib"],
 )
 
 go_binary(
@@ -72,7 +72,7 @@ package main
 import (
 	"fmt"
 
-	myparser "github.com/mihaigalos/intel-hex-parser/parser"
+	myparser "github.com/mihaigalos/go-ihex/parser"
 )
 
 func parseFile() {

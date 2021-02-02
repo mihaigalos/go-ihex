@@ -81,17 +81,17 @@ func IsCRCValid(line string) bool {
 		return true
 	}
 
-	a := uint8(StartingAddress(line))
+	a := StartingAddress(line)
 	r := Record(line)
 	p := Payload(line)
 	expectedCRC := CRC(line)
 
-	computedCRC := uint8(n + a + r)
+	computedCRC := n + uint8(a>>8) + uint8(a) + r
 	for _, e := range p {
-		computedCRC = computedCRC + uint8(e)
+		computedCRC = computedCRC + e
 	}
 
-	return -int8(computedCRC) == int8(expectedCRC)
+	return TwosComplement(computedCRC) == expectedCRC
 }
 
 func IsFileValid(file []string) bool {
@@ -112,4 +112,8 @@ func TotalNumberOfBytes(file []string) int {
 		result = result + int(NumberOfBytes(line))
 	}
 	return result
+}
+
+func TwosComplement(in uint8) uint8 {
+	return ^in + 1
 }
